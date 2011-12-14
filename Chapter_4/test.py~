@@ -1,0 +1,11 @@
+import urllib2
+from BeautifulSoup import *
+
+page='http://kiwitobes.com/wiki/Perl.html'
+c=urllib2.urlopen(page)
+soup=BeautifulSoup(c.read())
+
+links=soup('a')
+for link in links:
+	if ('href' in dict(link.attrs)):
+		print(link+"\n"+link['href'])
